@@ -1,5 +1,8 @@
 <template>
-  <v-container></v-container>
+  <v-container>
+    <img src="/static/images/forbidden.svg">
+    <h3 class="text-xs-center">Oops Something Wend Wrong...</h3>
+  </v-container>
 </template>
 <script>
 export default {

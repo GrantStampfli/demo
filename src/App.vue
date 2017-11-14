@@ -7,9 +7,9 @@
     </v-toolbar>
     <v-content>
       <v-container>
-        <v-slide-y-transition mode="out-in">
+        <transition :name="transitionName" mode="out-in">
           <router-view></router-view>
-        </v-slide-y-transition>
+        </transition>
       </v-container>
     </v-content>
     <v-footer app>
@@ -20,6 +20,7 @@
 
 <script>
   export default {
+    props: ['transitionName'],
     data () {
       return {
         title: 'Demo'

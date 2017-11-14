@@ -1,0 +1,33 @@
+[v-cloak] {
+  display: none;
+}
+
+.slide-fade-left-leave-active,
+.slide-fade-left-enter-active,
+.slide-fade-right-leave-active,
+.slide-fade-right-enter-active {
+  transition: all 250ms ease-in-out;
+}
+
+.slide-fade-left-enter,
+.slide-fade-right-leave {
+  -webkit-transform: translate3d(5%, 0, 0);
+  transform: translate3d(5%, 0, 0);
+  // opacity: 0;
+}
+
+
+.slide-fade-right-enter,
+.slide-fade-left-leave {
+  -webkit-transform: translate3d(-5%, 0, 0);
+  transform: translate3d(-5%, 0, 0);
+  // opacity: 0;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: all 175ms ease-in;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0
+}

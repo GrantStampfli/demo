@@ -12,12 +12,12 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Home',
+      name: 'home',
       component: Home
     },
     {
-      path: '/provider/:type',
-      name: 'Provider',
+      path: '/provider/:tenant',
+      name: 'provider',
       component: Provider
     }
   ]
