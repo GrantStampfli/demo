@@ -7,18 +7,35 @@ import Provider from '@/pages/Provider'
 
 Vue.use(Router)
 
-export default new Router({
+export const router = new Router({
   mode: 'history',
   routes: [
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: Home,
+      meta: {
+        title: 'Home'
+      }
     },
     {
       path: '/provider/:tenant',
       name: 'provider',
-      component: Provider
+      component: Provider,
+      meta: {
+        title: 'Provider'
+      }
     }
-  ]
+  ],
+  scrollBehavior (to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { x: 0, y: 0 }
+    }
+  }
+})
+
+router.beforeEach((to, from) => {
+  document.title = to.meta.title + ' - Fleet'
 })

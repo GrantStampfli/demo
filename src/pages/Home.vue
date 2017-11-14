@@ -19,7 +19,6 @@
 <script>
 export default {
   name: 'Home',
-  props: {},
   data () {
     return {
       providers: {
@@ -40,10 +39,7 @@ export default {
         }
       }
     }
-  },
-  computed: {},
-  methods: {},
-  components: {}
+  }
 }
 </script>
 <style lang="stylus" scoped>

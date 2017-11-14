@@ -5,7 +5,6 @@ import Vue from 'vue'
 import {
   Vuetify,
   VApp,
-  VNavigationDrawer,
   VFooter,
   VList,
   VBtn,
@@ -19,12 +18,13 @@ import './stylus/main.styl'
 
 import App from './App'
 import axios from 'axios'
-import router from './router'
+import { store } from './store'
+import { router } from './router'
+import { sync } from 'vuex-router-sync'
 
 Vue.use(Vuetify, {
   components: {
     VApp,
-    VNavigationDrawer,
     VFooter,
     VList,
     VBtn,
@@ -39,12 +39,14 @@ Vue.use(Vuetify, {
   }
 })
 
+sync(store, router)
 Vue.prototype.$http = axios
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  store,
   router,
   watch: {
     '$route' (to, from) {
