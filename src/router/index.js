@@ -36,6 +36,7 @@ export const router = new Router({
   }
 })
 
-router.beforeEach((to, from) => {
+router.beforeEach((to, from, next) => {
   document.title = to.meta.title + ' - Fleet'
+  next()
 })

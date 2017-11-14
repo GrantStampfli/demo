@@ -2,13 +2,13 @@
   <v-container>
     <v-layout row wrap>
       <template v-for="(p, i) in providers">
-        <v-flex v-if="i <= showingIndex" :key="p.companyName" xs6 sm4 md3>
+        <v-flex class="pa-2" v-if="i <= showingIndex" :key="p.companyName" xs6 sm4 md3>
           <v-card>
             <v-card-media>
               <img :src="p.images['Company Logo'].url" :alt="`${p.companyName} Logo`">
             </v-card-media>
             <v-card-text>
-              {{p.companyName}} {{i}}
+              {{p.companyName}}
             </v-card-text>
           </v-card>
         </v-flex>

@@ -8,7 +8,7 @@
       </v-toolbar-items>
     </v-toolbar>
     <v-content>
-    <page-header :pagename="$store.getters.header" app></page-header>
+    <page-header :pagename="$store.getters.header"></page-header>
       <v-container>
         <transition :name="transitionName" mode="out-in">
           <router-view></router-view>
