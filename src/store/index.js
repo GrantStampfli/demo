@@ -6,7 +6,24 @@ Vue.use(Vuex)
 export const store = new Vuex.Store({
   state: {
     page: {},
-    pageHeaderText: 'Popular Services'
+    pageHeaderText: 'Popular Services',
+    providers: {
+      customBroker: {
+        title: 'Custom Brokers',
+        logo: '/static/images/customs.svg',
+        alais: ''
+      },
+      ocean: {
+        title: 'Ocean Providers',
+        logo: '/static/images/ocean.svg',
+        alais: ''
+      },
+      air: {
+        title: 'Air Providers',
+        logo: '/static/images/air.svg',
+        alais: ''
+      }
+    }
   },
   mutations: {
     setHeader (state, str) {
@@ -25,6 +42,9 @@ export const store = new Vuex.Store({
     },
     route (state) {
       return state.route
+    },
+    providers (state) {
+      return state.providers
     }
   },
   actions: {

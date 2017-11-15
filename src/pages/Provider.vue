@@ -16,18 +16,23 @@
     </v-layout>
     <v-layout>
       <v-spacer></v-spacer>
-      <v-btn round color="white" v-on:click="pagination.current += 1">Show More</v-btn>
+      <v-btn round large color="white" v-on:click="pagination.current += 1">Show More</v-btn>
       <v-spacer></v-spacer>
     </v-layout>
   </v-container>
 </template>
 <script>
+import { store } from '@/store'
 export default {
   name: 'Provider',
   beforeRouteEnter (to, from, next) {
     console.log(to.meta)
+    const provider = Object.entries(store.getters.providers).find(provider => {
+      console.log(provider)
+      return provider[0] === to.params.tenant
+    })
     next(vm => {
-      vm.$store.dispatch('setHeader', to.meta.title)
+      vm.$store.dispatch('setHeader', provider[1].title)
       vm.getProvider(to.params.tenant)
     })
   },
@@ -43,7 +48,7 @@ export default {
   },
   computed: {
     showingIndex () {
-      return this.pagination.current * this.pagination.perPage
+      return this.pagination.current * this.pagination.perPage - 1
     },
     showingCount () {
 

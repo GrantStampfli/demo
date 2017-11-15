@@ -11,7 +11,7 @@
     </v-toolbar>
     <v-content>
     <page-header :pagename="$store.getters.header"></page-header>
-      <v-container>
+      <v-container class="app-container">
         <transition :name="transitionName" mode="out-in">
           <router-view></router-view>
         </transition>
@@ -39,12 +39,14 @@
 
 </script>
 <style lang="stylus">
+.app-container {
+  max-width: calc(960px + 32px);
+}
 .toolbar {
   .toolbar__content {
     max-width: 960px;
     margin: 0 auto;
     .site-title {
-      padding: 10px 0;
       font-size: 32px;
       font-weight: 300;
       letter-spacing: 1px;

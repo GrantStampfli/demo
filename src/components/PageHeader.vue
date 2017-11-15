@@ -1,7 +1,7 @@
 <template>
-  <v-toolbar>
+  <v-toolbar color="white" class="elevation-1">
     <v-toolbar-title class="page-header">
-      <h1 class="headline mb-0">
+      <h1 class="headline">
         <v-btn icon v-if="showBack" v-on:click="goBack()" class="ma-0">
           <v-icon>arrow_back</v-icon>
         </v-btn>
@@ -17,7 +17,7 @@ export default {
   props: {
     pagename: {
       type: String,
-      default: 'Popular Providers'
+      default: 'Popular Services'
     }
   },
   data () {
@@ -28,7 +28,7 @@ export default {
       return this.$store.getters.route
     },
     showBack () {
-      if (this.route.from.path !== '/') {
+      if (this.route.from.name && this.route.name !== 'home') {
         return true
       }
       return false
@@ -44,9 +44,10 @@ export default {
 
 <style scoped lang="stylus">
 .page-header {
-  padding: 14px;
   .headline {
     height: 36px;
+    margin: 0;
+    font-weight: 300;
   }
 }
 </style>
