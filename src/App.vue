@@ -1,7 +1,9 @@
 <template>
   <v-app light>
-    <v-toolbar fixed color="primary" app dark>
-      <v-toolbar-title>{{title}}</v-toolbar-title>
+    <v-toolbar fixed color="primary" flat app dark height="70">
+      <v-toolbar-title class="site-title">
+        <router-link :to="{name: 'home'}">{{title}}</router-link>
+      </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items>
         <v-btn flat>Login</v-btn>
@@ -36,3 +38,22 @@
   }
 
 </script>
+<style lang="stylus">
+.toolbar {
+  .toolbar__content {
+    max-width: 960px;
+    margin: 0 auto;
+    .site-title {
+      padding: 10px 0;
+      font-size: 32px;
+      font-weight: 300;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      a {
+        color: #fff;
+        text-decoration: none;
+      }
+    }
+  }
+}
+</style>

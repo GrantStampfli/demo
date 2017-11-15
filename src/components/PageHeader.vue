@@ -1,12 +1,14 @@
 <template>
-  <div class="page-header">
-    <h1 class="headline mb-0">
-      <v-btn icon v-if="showBack" v-on:click="goBack()" class="ma-0">
-        <v-icon>arrow_back</v-icon>
-      </v-btn>
-      <span v-html="pagename || ' '"></span>
-    </h1>
-  </div>
+  <v-toolbar>
+    <v-toolbar-title class="page-header">
+      <h1 class="headline mb-0">
+        <v-btn icon v-if="showBack" v-on:click="goBack()" class="ma-0">
+          <v-icon>arrow_back</v-icon>
+        </v-btn>
+        <span v-html="pagename || ' '"></span>
+      </h1>
+    </v-toolbar-title>
+</v-toolbar>
 </template>
 
 <script>
@@ -42,7 +44,6 @@ export default {
 
 <style scoped lang="stylus">
 .page-header {
-  background-color: #eee;
   padding: 14px;
   .headline {
     height: 36px;

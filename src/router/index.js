@@ -13,18 +13,12 @@ export const router = new Router({
     {
       path: '/',
       name: 'home',
-      component: Home,
-      meta: {
-        title: 'Home'
-      }
+      component: Home
     },
     {
       path: '/provider/:tenant',
       name: 'provider',
-      component: Provider,
-      meta: {
-        title: 'Provider'
-      }
+      component: Provider
     }
   ],
   scrollBehavior (to, from, savedPosition) {

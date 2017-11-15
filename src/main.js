@@ -35,7 +35,7 @@ Vue.use(Vuetify, {
     transitions
   },
   theme: {
-    primary: '#000'
+    primary: '#54CDB9'
   }
 })
 

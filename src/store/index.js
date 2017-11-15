@@ -6,7 +6,7 @@ Vue.use(Vuex)
 export const store = new Vuex.Store({
   state: {
     page: {},
-    pageHeaderText: 'Loading...'
+    pageHeaderText: 'Popular Services'
   },
   mutations: {
     setHeader (state, str) {

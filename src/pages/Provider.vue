@@ -25,30 +25,35 @@
 export default {
   name: 'Provider',
   beforeRouteEnter (to, from, next) {
+    console.log(to.meta)
     next(vm => {
+      vm.$store.dispatch('setHeader', to.meta.title)
       vm.getProvider(to.params.tenant)
     })
   },
   data () {
     return {
+      total: 0,
       providers: [],
       pagination: {
         current: 1,
-        perPage: 20,
-        total: 0
+        perPage: 20
       }
     }
   },
   computed: {
     showingIndex () {
       return this.pagination.current * this.pagination.perPage
+    },
+    showingCount () {
+
     }
   },
   methods: {
     getProvider (type) {
       this.$http.get('/static/feed/sample.json').then(res => {
         this.providers = res.data.providers.filter(provider => provider.type === type)
-        this.pagination.total = this.providers.length
+        this.total = this.providers.length
       })
     }
   }

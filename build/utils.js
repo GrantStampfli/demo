@@ -36,14 +36,6 @@ exports.cssLoaders = function (options) {
       })
     }
 
-    // Add vuetify-loader
-    loaders.push({
-      loader: 'vuetify-loader',
-      options: {
-        theme: resolve('./src/stylus/theme.styl')
-      }
-    })
-
     // Extract CSS when that option is specified
     // (which is the case during production build)
     if (options.extract) {
