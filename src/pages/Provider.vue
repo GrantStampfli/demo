@@ -16,7 +16,10 @@
     </v-layout>
     <v-layout>
       <v-spacer></v-spacer>
-      <v-btn round large color="white" v-on:click="pagination.current += 1">Show More</v-btn>
+      <div>
+        <v-btn round large color="white" v-on:click="pagination.current += 1">Show More</v-btn>
+        <h5 class="text-xs-center">{{showingCount}}</h5>
+      </div>
       <v-spacer></v-spacer>
     </v-layout>
   </v-container>
@@ -51,7 +54,8 @@ export default {
       return this.pagination.current * this.pagination.perPage - 1
     },
     showingCount () {
-
+      const current = this.pagination.current * this.pagination.perPage
+      return 'Showing ' + current + ' of ' + (current >= this.total ? current : this.total)
     }
   },
   methods: {
