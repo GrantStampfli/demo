@@ -3,7 +3,7 @@
     <v-layout>
       <template v-for="(value, key, index) in $store.getters.providers">
         <v-flex class="pa-2" sm4 :key="key">
-          <v-card class="card-provider" :to="{name: 'provider',  params: {tenant: key}}">
+          <v-card class="card-provider" :to="{name: key}">
             <v-card-media>
               <img :src="value.logo">
             </v-card-media>

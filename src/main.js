@@ -48,16 +48,6 @@ new Vue({
   el: '#app',
   store,
   router,
-  watch: {
-    '$route' (to, from) {
-      const toDepth = to.path.split('/').length
-      const fromDepth = from.path.split('/').length
-      this.transitionName = toDepth < fromDepth ? 'slide-fade-right' : 'slide-fade-left'
-    }
-  },
-  data: {
-    transitionName: 'slide-fade-left'
-  },
   components: { App },
-  template: '<App :transition-name="transitionName" />'
+  template: '<App />'
 })

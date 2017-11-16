@@ -1,14 +1,15 @@
 <template>
-  <v-container>
+  <v-container fluid grid-list-xs class="provider-container">
+    <h1 class="">{{this.total}} {{this.title}}</h1>
     <v-layout row wrap>
       <template v-for="(p, i) in providers">
-        <v-flex class="pa-2" v-if="i <= showingIndex" :key="p.companyName" xs6 sm4 md3>
-          <v-card>
-            <v-card-media>
-              <img :src="p.images['Company Logo'].url" :alt="`${p.companyName} Logo`">
-            </v-card-media>
-            <v-card-text>
-              {{p.companyName}}
+        <v-flex class="pa-2" v-if="i <= showingIndex" :key="p.companyName + i" xs6 sm4 md3>
+          <v-card tile class="provider" height="200px">
+            <div class="provider-image">
+              <v-card-media contain :src="p.images['Company Logo'].url" :alt="`${p.companyName} Logo`" height="100px"></v-card-media>
+            </div>
+            <v-card-text class="provider-name">
+              <h5>{{p.companyName}}</h5>
             </v-card-text>
           </v-card>
         </v-flex>
@@ -29,18 +30,17 @@ import { store } from '@/store'
 export default {
   name: 'Provider',
   beforeRouteEnter (to, from, next) {
-    console.log(to.meta)
-    const provider = Object.entries(store.getters.providers).find(provider => {
-      console.log(provider)
-      return provider[0] === to.params.tenant
-    })
+    console.log(to)
+    const title = store.getters.providers[to.name].title
+    store.dispatch('setHeader', title)
     next(vm => {
-      vm.$store.dispatch('setHeader', provider[1].title)
-      vm.getProvider(to.params.tenant)
+      vm.title = title
+      vm.getProvider(to.name)
     })
   },
   data () {
     return {
+      title: '',
       total: 0,
       providers: [],
       pagination: {
@@ -54,8 +54,8 @@ export default {
       return this.pagination.current * this.pagination.perPage - 1
     },
     showingCount () {
-      const current = this.pagination.current * this.pagination.perPage
-      return 'Showing ' + current + ' of ' + (current >= this.total ? current : this.total)
+      const current = (this.showingIndex > this.total) ? this.total : this.pagination.current * this.pagination.perPage
+      return 'Showing ' + current + ' of ' + this.total
     }
   },
   methods: {
@@ -69,5 +69,20 @@ export default {
 }
 </script>
 <style lang="stylus" scoped>
-
+@import "~flexbox"
+.provider-container {
+  // width: calc(100% + 8px)
+  padding: 16px;
+}
+  .provider {
+    flexbox(flex);
+    flex-direction(column);
+    justify-content(center);
+    align-items(center);
+    .provider-image {
+      height: 100px;
+      width: 100px;
+      overflow: hidden;
+    }
+  }
 </style>

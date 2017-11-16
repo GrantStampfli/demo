@@ -4,6 +4,7 @@ import Router from 'vue-router'
 // Pages:
 import Home from '@/pages/Home'
 import Provider from '@/pages/Provider'
+import Forbidden from '@/components/Forbidden'
 
 Vue.use(Router)
 
@@ -16,9 +17,29 @@ export const router = new Router({
       component: Home
     },
     {
-      path: '/provider/:tenant',
-      name: 'provider',
+      path: '/provider/custom-broker',
+      name: 'customBroker',
+      component: Provider,
+      alias: 'provider/customBroker'
+    },
+    {
+      path: '/provider/ocean',
+      name: 'ocean',
       component: Provider
+    },
+    {
+      path: '/provider/air',
+      name: 'home/air',
+      component: Provider
+    },
+    // {
+    //   path: '/provider/:tenant',
+    //   name: 'provider',
+    //   component: Provider
+    // },
+    {
+      path: '*',
+      component: Forbidden
     }
   ],
   scrollBehavior (to, from, savedPosition) {

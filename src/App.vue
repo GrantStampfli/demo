@@ -10,47 +10,58 @@
       </v-toolbar-items>
     </v-toolbar>
     <v-content>
-    <page-header :pagename="$store.getters.header"></page-header>
+      <page-header :pagename="$store.getters.header"></page-header>
       <v-container class="app-container">
         <transition :name="transitionName" mode="out-in">
           <router-view></router-view>
         </transition>
       </v-container>
     </v-content>
-    <v-footer app>
-      <span>&copy; 2017 {{title}}</span>
-    </v-footer>
+    <extensive-footer app>
+      <div slot="copy">&copy; 2017 {{title}}</div>
+    </extensive-footer>
   </v-app>
 </template>
 
 <script>
-  import PageHeader from '@/components/PageHeader'
-  export default {
-    props: ['transitionName'],
-    data () {
-      return {
-        title: 'Demo'
-      }
-    },
-    components: {
-      'page-header': PageHeader
+import PageHeader from '@/components/PageHeader'
+import ExtensiveFooter from '@/components/ExtensiveFooter'
+export default {
+  data () {
+    return {
+      title: 'Demo',
+      transitionName: 'slide-fade-left'
     }
+  },
+  watch: {
+    '$route' (to, from) {
+      const toDepth = to.path.split('/').length
+      const fromDepth = from.path.split('/').length
+      this.transitionName = toDepth < fromDepth ? 'slide-fade-right' : 'slide-fade-left'
+    }
+  },
+  components: {
+    'page-header': PageHeader,
+    'extensive-footer': ExtensiveFooter
   }
-
+}
 </script>
 <style lang="stylus">
 .app-container {
   max-width: calc(960px + 32px);
 }
+
 .toolbar {
   .toolbar__content {
     max-width: 960px;
     margin: 0 auto;
+
     .site-title {
       font-size: 32px;
       font-weight: 300;
       letter-spacing: 1px;
       text-transform: uppercase;
+
       a {
         color: #fff;
         text-decoration: none;
