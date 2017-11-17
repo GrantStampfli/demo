@@ -1,29 +1,39 @@
 <template>
-  <v-card flat class="transparent">
-    <div class="loader" :class="{'loading': loading}"></div>
-    <h3 class="text-xs-center">Loading</h3>
+  <v-card flat class="loader" v-if="loading">
+    <img src="/static/images/loader.svg" class="loading"></div>
+    <h3 class="display-1 grey--text text--darken-2">Loading...</h3>
   </v-card>
 </template>
 <script>
 export default {
-  name: 'Loading',
+  name: 'Loader',
   props: {
     loading: Boolean
-  },
-  data () {
-    return {}
-  },
-  computed: {},
-  methods: {},
-  components: {}
+  }
 }
 </script>
 <style lang="stylus" scoped>
+
+.loader {
+  position: fixed;
+  background: transparent;
+  top: 50%;
+  left: 50%;
+  margin: -15rem 0 0 -5rem;
+  width: 10rem;
+  height: 10rem;
+  z-index: 1000;
+  > h3 {
+    text-align: center;
+    margin: 3.5rem 0;
+    font-weight: 300;
+  }
+}
 .loading {
-  -moz-animation: spin 0.75s infinite linear;
-  -o-animation: spin 0.75s infinite linear;
-  -webkit-animation: spin 0.75s infinite linear;
-  animation: spin 0.75s infinite linear;
+  -moz-animation: spin .75s infinite linear;
+  -o-animation: spin .75s infinite linear;
+  -webkit-animation: spin .75s infinite linear;
+  animation: spin .75s infinite linear;
 }
 
 @keyframes spin {

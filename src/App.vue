@@ -12,8 +12,9 @@
     <v-content>
       <page-header :pagename="$store.getters.header" :height="70"></page-header>
       <v-container class="app-container">
+        <loader :loading="$store.getters.loader"></loader>
         <transition :name="transitionName" mode="out-in">
-          <router-view></router-view>
+          <router-view :class="{'app-loading': $store.getters.loader}"></router-view>
         </transition>
       </v-container>
     </v-content>
@@ -24,6 +25,7 @@
 </template>
 
 <script>
+import Loader from '@/components/Loader'
 import PageHeader from '@/components/PageHeader'
 import ExtensiveFooter from '@/components/ExtensiveFooter'
 export default {
@@ -41,15 +43,23 @@ export default {
     }
   },
   components: {
+    'loader': Loader,
     'page-header': PageHeader,
     'extensive-footer': ExtensiveFooter
   }
 }
 </script>
 <style lang="stylus">
+#app {
+  background-color: #FBFAF7;
   .app-container {
     max-width: 960px;
   }
+
+  .app-loading {
+    opacity: .05;
+  }
+}
 
 .toolbar {
   .toolbar__content {

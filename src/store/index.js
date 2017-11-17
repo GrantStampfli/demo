@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export const store = new Vuex.Store({
   state: {
-    page: {},
+    loader: false,
     pageHeaderText: 'Popular Services',
     providers: {
       customBroker: {
@@ -26,6 +26,9 @@ export const store = new Vuex.Store({
     }
   },
   mutations: {
+    setLoader (state, bool) {
+      state.loader = bool
+    },
     setHeader (state, str) {
       state.pageHeaderText = str
     },
@@ -34,6 +37,9 @@ export const store = new Vuex.Store({
     }
   },
   getters: {
+    loader (state) {
+      return state.loader
+    },
     header (state) {
       return state.pageHeaderText
     },
@@ -48,6 +54,9 @@ export const store = new Vuex.Store({
     }
   },
   actions: {
+    setLoader (context, bool) {
+      context.commit('setloader', bool)
+    },
     setHeader (context, str) {
       context.commit('setHeader', str)
     },

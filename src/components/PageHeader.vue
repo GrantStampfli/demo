@@ -1,8 +1,8 @@
 <template>
-  <v-toolbar color="white" class="elevation-1">
-    <v-toolbar-title class="page-header">
-      <h1 class="headline">
-        <v-btn icon v-if="showBack" v-on:click="goBack()" class="ma-0">
+  <v-toolbar color="white" class="elevation-1" height="75">
+    <v-toolbar-title class="page-header grey--text text--darken-2">
+      <h1 class="title">
+        <v-btn icon v-if="showBack" v-on:click="goBack()" class="ma-0" color="grey darken-2" flat>
           <v-icon>arrow_back</v-icon>
         </v-btn>
         <span v-html="pagename || ' '"></span>

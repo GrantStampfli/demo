@@ -29,14 +29,9 @@ export const router = new Router({
     },
     {
       path: '/provider/air',
-      name: 'home/air',
+      name: 'air',
       component: Provider
     },
-    // {
-    //   path: '/provider/:tenant',
-    //   name: 'provider',
-    //   component: Provider
-    // },
     {
       path: '*',
       component: Forbidden

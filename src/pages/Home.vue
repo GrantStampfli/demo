@@ -1,12 +1,14 @@
 <template>
-  <v-container fluid grid-list-xs>
+  <v-container fluid grid-list-xs class="tenants">
     <v-layout>
       <template v-for="(value, key, index) in $store.getters.providers">
-        <v-flex class="pa-2" sm4 :key="key">
-          <v-card tile class="card-provider" :to="{name: key}">
-            <v-card-media :src="value.logo" :height="70" contain></v-card-media>
-            <v-card-actions>
-              <h2 class="title text-xs-center">{{value.title}}
+        <v-flex class="pa-3" sm4 :key="key">
+          <v-card tile class="card-tenant elevation-4" :to="{name: key}">
+            <div class="tenant-logo">
+              <img :src="value.logo" :height="70">
+            </div>
+            <v-card-actions class="justify-center">
+              <h2 class="tenant-name headline">{{value.title}}</h2>
             </v-card-actions>
           </v-card>
         </v-flex>
@@ -24,10 +26,29 @@ export default {
   }
 }
 </script>
-<style lang="stylus" scoped>
-  .card-provider {
-    img {
-      opacity: .7;
+<style lang="stylus">
+@import "~flexbox";
+  .tenants {
+    .card-tenant {
+      flexbox(flex);
+      flex-direction(column);
+      justify-content(space-between);
+      align-items(center);
+      min-height: 300px;
+      &:hover .tenant-logo {
+        opacity: 1;
+      }
+      .tenant-logo {
+        flex(1,1,50%);
+        flexbox(flex);
+        flex-direction(column);
+        justify-content(center);
+        opacity: .7;
+      }
+      .tenant-name {
+        font-weight: 300;
+        padding: 1rem 0 2rem;
+      }
     }
   }
 </style>

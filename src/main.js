@@ -12,12 +12,14 @@ import {
   VIcon,
   VGrid,
   VToolbar,
+  VSubheader,
   transitions
 } from 'vuetify'
 import './stylus/main.styl'
 
 import App from './App'
-import axios from 'axios'
+import Axios from 'axios'
+import Globals from './globals'
 import { store } from './store'
 import { router } from './router'
 import { sync } from 'vuex-router-sync'
@@ -32,6 +34,7 @@ Vue.use(Vuetify, {
     VIcon,
     VGrid,
     VToolbar,
+    VSubheader,
     transitions
   },
   theme: {
@@ -39,8 +42,10 @@ Vue.use(Vuetify, {
   }
 })
 
+Vue.use(Globals)
+
 sync(store, router)
-Vue.prototype.$http = axios
+Vue.prototype.$http = Axios
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
