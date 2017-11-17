@@ -1,4 +1,6 @@
 <template>
+  <v-container fluid grid-list-xs>
+    <h1 class="display-2">{{this.total}} {{this.title}}</h1>
   <v-container fluid grid-list-xs class="provider-container">
     <v-layout row>
       <v-flex>
@@ -21,7 +23,7 @@
         <v-flex class="pa-2" v-if="i <= showingIndex" :key="p.companyName + i" xs6 sm4 md3>
           <v-card tile class="provider" height="200px" href="p.">
             <div class="provider-image">
-              <v-card-media contain :src="p.images['Company Logo'].url" :alt="`${p.companyName} Logo`" height="100px"></v-card-media>
+              <v-card-media :src="p.images['Company Logo'].url" :alt="`${p.companyName} Logo`" height="100px"></v-card-media>
             </div>
             <v-card-text class="provider-name">
               <h5 class="subheading">{{p.companyName}}</h5>
@@ -100,7 +102,9 @@ export default {
     .provider-image {
       height: 100px;
       width: 100px;
-      overflow: hidden;
+      .card__media {
+        border-radius: 3px;
+      }
     }
     .provider-name {
       text-align: center;

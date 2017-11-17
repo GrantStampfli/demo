@@ -10,7 +10,7 @@
       </v-toolbar-items>
     </v-toolbar>
     <v-content>
-      <page-header :pagename="$store.getters.header"></page-header>
+      <page-header :pagename="$store.getters.header" :height="70"></page-header>
       <v-container class="app-container">
         <transition :name="transitionName" mode="out-in">
           <router-view></router-view>
@@ -47,9 +47,9 @@ export default {
 }
 </script>
 <style lang="stylus">
-.app-container {
-  max-width: calc(960px + 32px);
-}
+  .app-container {
+    max-width: 960px;
+  }
 
 .toolbar {
   .toolbar__content {
