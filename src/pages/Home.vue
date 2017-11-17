@@ -1,12 +1,10 @@
 <template>
-  <v-container>
+  <v-container fluid grid-list-xs>
     <v-layout>
       <template v-for="(value, key, index) in $store.getters.providers">
         <v-flex class="pa-2" sm4 :key="key">
-          <v-card class="card-provider" :to="{name: key}">
-            <v-card-media>
-              <img :src="value.logo">
-            </v-card-media>
+          <v-card tile class="card-provider" :to="{name: key}">
+            <v-card-media :src="value.logo" :height="70" contain></v-card-media>
             <v-card-actions>
               {{value.title}}
             </v-card-actions>

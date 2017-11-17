@@ -1,12 +1,12 @@
 <template>
-  <v-container fluid grid-list-xs class="provider-container">
-    <h1 class="">{{this.total}} {{this.title}}</h1>
+  <v-container fluid grid-list-xs>
+    <h1 class="display-2">{{this.total}} {{this.title}}</h1>
     <v-layout row wrap>
       <template v-for="(p, i) in providers">
         <v-flex class="pa-2" v-if="i <= showingIndex" :key="p.companyName + i" xs6 sm4 md3>
           <v-card tile class="provider" height="200px">
             <div class="provider-image">
-              <v-card-media contain :src="p.images['Company Logo'].url" :alt="`${p.companyName} Logo`" height="100px"></v-card-media>
+              <v-card-media :src="p.images['Company Logo'].url" :alt="`${p.companyName} Logo`" height="100px"></v-card-media>
             </div>
             <v-card-text class="provider-name">
               <h5>{{p.companyName}}</h5>
@@ -70,10 +70,6 @@ export default {
 </script>
 <style lang="stylus" scoped>
 @import "~flexbox"
-.provider-container {
-  // width: calc(100% + 8px)
-  padding: 16px;
-}
   .provider {
     flexbox(flex);
     flex-direction(column);
@@ -82,7 +78,9 @@ export default {
     .provider-image {
       height: 100px;
       width: 100px;
-      overflow: hidden;
+      .card__media {
+        border-radius: 3px;
+      }
     }
   }
 </style>

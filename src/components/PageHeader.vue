@@ -15,6 +15,10 @@
 export default {
   name: 'PageHeader',
   props: {
+    height: {
+      type: Number,
+      default: null
+    },
     pagename: {
       type: String,
       default: 'Popular Services'
