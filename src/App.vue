@@ -13,14 +13,12 @@
       <page-header :pagename="$store.getters.header" :height="70"></page-header>
       <v-container class="app-container">
         <loader :loading="$store.getters.loader"></loader>
-        <transition :name="transitionName" mode="out-in">
+        <v-fade-transition mode="out-in">
           <router-view :class="{'app-loading': $store.getters.loader}"></router-view>
-        </transition>
+        </v-fade-transition>
       </v-container>
     </v-content>
-    <extensive-footer app>
-      <div slot="copy">&copy; 2017 {{title}}</div>
-    </extensive-footer>
+    <extensive-footer app :title="title"></extensive-footer>
   </v-app>
 </template>
 
@@ -31,15 +29,7 @@ import ExtensiveFooter from '@/components/ExtensiveFooter'
 export default {
   data () {
     return {
-      title: 'Demo',
-      transitionName: 'slide-fade-left'
-    }
-  },
-  watch: {
-    '$route' (to, from) {
-      const toDepth = to.path.split('/').length
-      const fromDepth = from.path.split('/').length
-      this.transitionName = toDepth < fromDepth ? 'slide-fade-right' : 'slide-fade-left'
+      title: 'Demo'
     }
   },
   components: {

@@ -3,7 +3,7 @@
     <h1 class="display-2">{{this.total}} {{this.title}}</h1>
     <v-layout row wrap>
       <template v-for="(p, i) in providers">
-        <v-flex class="pa-2" v-if="i <= showingIndex" :key="p.companyName + i" xs6 sm4 md3>
+        <v-flex class="pa-2" v-if="i <= showingIndex" :key="p.companyName + i" xs12 sm6 md4 lg3>
           <v-card tile class="provider" height="200px">
             <div class="provider-image">
               <v-card-media :src="p.images['Company Logo'].url" :alt="`${p.companyName} Logo`" height="100px"></v-card-media>
@@ -30,9 +30,9 @@ import { store } from '@/store'
 export default {
   name: 'Provider',
   beforeRouteEnter (to, from, next) {
-    console.log(to)
     const title = store.getters.providers[to.name].title
     store.dispatch('setHeader', title)
+    store.dispatch('setLoader', true)
     next(vm => {
       vm.title = title
       vm.getProvider(to.name)
@@ -66,8 +66,13 @@ export default {
         })
         this.providers = providers.sort(this.$compareValues('companyName'))
         this.total = this.providers.length
-      })
+      }).then(() => this.$store.dispatch('setLoader', false))
     }
+  },
+  beforeRouteLeave (to, from, next) {
+    // make sure spinner is off
+    this.$store.dispatch('setLoader', false)
+    next()
   }
 }
 </script>

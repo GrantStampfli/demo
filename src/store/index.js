@@ -55,7 +55,7 @@ export const store = new Vuex.Store({
   },
   actions: {
     setLoader (context, bool) {
-      context.commit('setloader', bool)
+      context.commit('setLoader', bool)
     },
     setHeader (context, str) {
       context.commit('setHeader', str)

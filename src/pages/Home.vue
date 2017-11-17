@@ -1,8 +1,8 @@
 <template>
   <v-container fluid grid-list-xs class="tenants">
-    <v-layout>
+    <v-layout row wrap>
       <template v-for="(value, key, index) in $store.getters.providers">
-        <v-flex class="pa-3" sm4 :key="key">
+        <v-flex class="pa-3" md4 xs12 :key="key">
           <v-card tile class="card-tenant elevation-4" :to="{name: key}">
             <div class="tenant-logo">
               <img :src="value.logo" :height="70">

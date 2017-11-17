@@ -60,7 +60,7 @@
           </template>
         </v-flex>
       </v-layout>
-      <slot name="copy"></slot>
+      <div class="footer-copy">&copy; 2017 {{title}}</div>
     </v-container>
   </v-footer>
 </template>
@@ -70,6 +70,9 @@
 // import svgFacebook from '@/assets/social/facebook.svg'
 export default {
   name: 'Footer',
+  props: {
+    title: String
+  },
   data () {
     return {
       social: [
@@ -90,32 +93,42 @@ export default {
   }
 }
 </script>
-<style lang="stylus" scoped>
-.app-footer {
-  .container {
-    max-width: 960px;
-    margin: 0 auto;
+<style lang="stylus">
+.application {
+  .theme--dark.footer.app-footer {
+    background: #555;
+    color: rgba(255,255,255,0.7);
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .footer-copy {
+      font-size: 13px;
+      margin: 3rem 1rem 1rem;
+    }
   }
 }
 
-.btn-social {
-  margin-right: 0;
-  .icon-social {
-    background-color: #fff;
-    width: 24px;
-    height: 24px;
-  }
-  .linkedin {
-    mask: url(/static/images/social/linkedin.svg) no-repeat 50% 50%;
-    -webkit-mask:  url(/static/images/social/linkedin.svg) no-repeat 50% 50%;
-  }
-  .twitter {
-    mask: url(/static/images/social/twitter.svg) no-repeat 50% 50%;
-    -webkit-mask:  url(/static/images/social/twitter.svg) no-repeat 50% 50%;
-  }
-  .facebook {
-    mask: url(/static/images/social/facebook.svg) no-repeat 50% 50%;
-    -webkit-mask:  url(/static/images/social/facebook.svg) no-repeat 50% 50%;
+.app-footer {
+  .btn-social {
+    margin-right: 0;
+    .icon-social {
+      background-color: rgba(255,255,255,0.7);
+      width: 24px;
+      height: 24px;
+    }
+    .linkedin {
+      mask: url(/static/images/social/linkedin.svg) no-repeat 50% 50%;
+      -webkit-mask:  url(/static/images/social/linkedin.svg) no-repeat 50% 50%;
+    }
+    .twitter {
+      mask: url(/static/images/social/twitter.svg) no-repeat 50% 50%;
+      -webkit-mask:  url(/static/images/social/twitter.svg) no-repeat 50% 50%;
+    }
+    .facebook {
+      mask: url(/static/images/social/facebook.svg) no-repeat 50% 50%;
+      -webkit-mask:  url(/static/images/social/facebook.svg) no-repeat 50% 50%;
+    }
   }
 }
 </style>

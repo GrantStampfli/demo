@@ -30,10 +30,10 @@ export default {
   }
 }
 .loading {
-  -moz-animation: spin .75s infinite linear;
-  -o-animation: spin .75s infinite linear;
-  -webkit-animation: spin .75s infinite linear;
-  animation: spin .75s infinite linear;
+  -moz-animation: spin 1.5s infinite linear;
+  -o-animation: spin 1.5s infinite linear;
+  -webkit-animation: spin 1.5s infinite linear;
+  animation: spin 1.5s infinite linear;
 }
 
 @keyframes spin {
