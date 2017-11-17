@@ -8,7 +8,7 @@
               <img :src="value.logo">
             </v-card-media>
             <v-card-actions>
-              {{value.title}}
+              <h2 class="title text-xs-center">{{value.title}}
             </v-card-actions>
           </v-card>
         </v-flex>
@@ -28,6 +28,8 @@ export default {
 </script>
 <style lang="stylus" scoped>
   .card-provider {
-    opacity: .7;
+    img {
+      opacity: .7;
+    }
   }
 </style>

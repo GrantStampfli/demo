@@ -1,15 +1,30 @@
 <template>
   <v-container fluid grid-list-xs class="provider-container">
-    <h1 class="">{{this.total}} {{this.title}}</h1>
+    <v-layout row>
+      <v-flex>
+        <h1 class="display-1">{{this.total}} {{this.title}}</h1>
+      </v-flex>
+      <v-flex>
+        <v-btn-toggle mandatory v-model="sortAsc">
+          <v-btn flat :value="true">
+            <span>Ascending</span>
+            <v-icon>sort_by_alpha</v-icon>
+          </v-btn>
+          <v-btn flat :value="false">
+            <span>Descending</span>
+            <v-icon>sort_by_alpha</v-icon>
+          </v-btn>
+        </v-btn-toggle>
+    </v-layout>
     <v-layout row wrap>
       <template v-for="(p, i) in providers">
         <v-flex class="pa-2" v-if="i <= showingIndex" :key="p.companyName + i" xs6 sm4 md3>
-          <v-card tile class="provider" height="200px">
+          <v-card tile class="provider" height="200px" href="p.">
             <div class="provider-image">
               <v-card-media contain :src="p.images['Company Logo'].url" :alt="`${p.companyName} Logo`" height="100px"></v-card-media>
             </div>
             <v-card-text class="provider-name">
-              <h5>{{p.companyName}}</h5>
+              <h5 class="subheading">{{p.companyName}}</h5>
             </v-card-text>
           </v-card>
         </v-flex>
@@ -42,6 +57,7 @@ export default {
     return {
       title: '',
       total: 0,
+      sortAsc: true,
       providers: [],
       pagination: {
         current: 1,
@@ -61,7 +77,10 @@ export default {
   methods: {
     getProvider (type) {
       this.$http.get('/static/feed/sample.json').then(res => {
-        this.providers = res.data.providers.filter(provider => provider.type === type)
+        const providers = res.data.providers.sort()
+        this.providers = providers.filter(provider => {
+          return provider.type === type && provider.yearStarted >= 2010
+        })
         this.total = this.providers.length
       })
     }
@@ -71,7 +90,6 @@ export default {
 <style lang="stylus" scoped>
 @import "~flexbox"
 .provider-container {
-  // width: calc(100% + 8px)
   padding: 16px;
 }
   .provider {
@@ -83,6 +101,9 @@ export default {
       height: 100px;
       width: 100px;
       overflow: hidden;
+    }
+    .provider-name {
+      text-align: center;
     }
   }
 </style>
