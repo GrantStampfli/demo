@@ -26,15 +26,13 @@
   </v-container>
 </template>
 <script>
-import { store } from '@/store'
 export default {
   name: 'Provider',
   beforeRouteEnter (to, from, next) {
-    const title = store.getters.providers[to.name].title
-    store.dispatch('setHeader', title)
-    store.dispatch('setLoader', true)
+    to.meta.loader()
     next(vm => {
-      vm.title = title
+      vm.title = to.meta.title
+      vm.$store.dispatch('setHeader', to.meta.title)
       vm.getProvider(to.name)
     })
   },

@@ -1,14 +1,14 @@
 <template>
   <v-container fluid grid-list-xs class="tenants">
     <v-layout row wrap>
-      <template v-for="(value, key, index) in $store.getters.providers">
-        <v-flex class="pa-3" md4 xs12 :key="key">
-          <v-card tile class="card-tenant elevation-4" :to="{name: key}">
+      <template v-for="(p, i) in providers">
+        <v-flex class="pa-3" md4 xs12 :key="i">
+          <v-card tile class="card-tenant elevation-4" :to="{name: p.name}">
             <div class="tenant-logo">
-              <img :src="value.logo" :height="70">
+              <img :src="p.logo" :height="70">
             </div>
             <v-card-actions class="justify-center">
-              <h2 class="tenant-name headline">{{value.title}}</h2>
+              <h2 class="tenant-name headline">{{p.title}}</h2>
             </v-card-actions>
           </v-card>
         </v-flex>
@@ -23,6 +23,27 @@ export default {
     next(vm => {
       vm.$store.dispatch('setHeader', 'Popular Services')
     })
+  },
+  data () {
+    return {
+      providers: [
+        {
+          title: 'Custom Brokers',
+          logo: '/static/images/customs.svg',
+          name: 'customBroker'
+        },
+        {
+          title: 'Ocean Providers',
+          logo: '/static/images/ocean.svg',
+          name: 'ocean'
+        },
+        {
+          title: 'Air Providers',
+          logo: '/static/images/air.svg',
+          name: 'air'
+        }
+      ]
+    }
   }
 }
 </script>

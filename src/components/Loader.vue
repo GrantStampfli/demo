@@ -19,7 +19,7 @@ export default {
   background: transparent;
   top: 50%;
   left: 50%;
-  margin: -15rem 0 0 -5rem;
+  margin: -10rem 0 0 -5rem;
   width: 10rem;
   height: 10rem;
   z-index: 1000;

@@ -60,14 +60,11 @@
           </template>
         </v-flex>
       </v-layout>
-      <div class="footer-copy">&copy; 2017 {{title}}</div>
+      <div class="footer-copy">&copy; {{ new Date().getFullYear() }} {{ title }}</div>
     </v-container>
   </v-footer>
 </template>
 <script>
-// import svgLinkedin from '@/assets/social/linkedin.svg'
-// import svgTwitter from '@/assets/social/twitter.svg'
-// import svgFacebook from '@/assets/social/facebook.svg'
 export default {
   name: 'Footer',
   props: {
