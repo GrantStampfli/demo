@@ -32,7 +32,6 @@ export default {
     to.meta.loader()
     next(vm => {
       vm.title = to.meta.title
-      vm.$store.dispatch('setHeader', to.meta.title)
       vm.getProvider(to.name)
     })
   },

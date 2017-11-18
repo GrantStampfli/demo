@@ -19,11 +19,6 @@
 <script>
 export default {
   name: 'Home',
-  beforeRouteEnter (to, from, next) {
-    next(vm => {
-      vm.$store.dispatch('setHeader', 'Popular Services')
-    })
-  },
   data () {
     return {
       providers: [

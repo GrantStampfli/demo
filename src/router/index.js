@@ -17,7 +17,10 @@ export const router = new Router({
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: Home,
+      meta: {
+        title: 'Popular Services'
+      }
     },
     {
       path: '/provider/custom-broker',
@@ -59,4 +62,10 @@ export const router = new Router({
       return { x: 0, y: 0 }
     }
   }
+})
+
+router.beforeEach((to, from, next) => {
+  store.dispatch('setHeader', to.meta.title)
+  document.title = 'Fleet - ' + to.meta.title
+  next()
 })

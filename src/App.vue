@@ -12,9 +12,9 @@
     <v-content>
       <page-header :pagename="$store.getters.header" :height="70"></page-header>
       <v-container class="app-container">
-        <loader :loading="$store.getters.loader"></loader>
+        <loader :loading="loading"></loader>
         <v-fade-transition mode="out-in">
-          <router-view :class="{'app-loading': $store.getters.loader}"></router-view>
+          <router-view :class="{'app-loading': loading}"></router-view>
         </v-fade-transition>
       </v-container>
     </v-content>
@@ -30,6 +30,11 @@ export default {
   data () {
     return {
       title: 'Demo'
+    }
+  },
+  computed: {
+    loading () {
+      return this.$store.getters.loader
     }
   },
   components: {
